@@ -1,0 +1,369 @@
+/* ═══════════════════════════════════════════════════
+   FIX PATCH — Warna font kontras untuk background terang/cream
+   Tempel CSS ini di dalam <style> paling BAWAH, sebelum </style>
+   atau tambahkan <link rel="stylesheet" href="fix-colors-patch.css">
+═══════════════════════════════════════════════════ */
+
+:root {
+  /* Override variabel warna ke nilai gelap yang terbaca di bg terang */
+  --ivory:      #FDFAF5;
+  --cream:      #F8F2E6;
+  --cream2:     #F2E8D5;
+  --beige:      #E8D9C0;
+  --warm-white: #FFFDF8;
+  --parchment:  #F5EDDC;
+
+  --text-h:  #2E1C0E;
+  --text-b:  #4A3020;
+  --text-s:  #7A5535;
+  --text-xs: #A07850;
+
+  --gold:      #B8860B;
+  --gold-lt:   #C8960C;
+  --gold-dk:   #8B6508;
+  --gold-shine:#D4A010;
+
+  --rose:  #C0504A;
+  --blush: #D4826A;
+
+  --shadow-soft: 0 8px 40px rgba(90,56,32,0.12), 0 2px 12px rgba(90,56,32,0.06);
+  --shadow-md:   0 16px 60px rgba(90,56,32,0.18), 0 4px 20px rgba(90,56,32,0.08);
+  --shadow-gold: 0 12px 40px rgba(139,101,8,0.25), 0 4px 16px rgba(139,101,8,0.12);
+}
+
+/* BODY & GLOBAL */
+body {
+  background: var(--cream) !important;
+  color: var(--text-b) !important;
+}
+body * { color: inherit; }
+
+/* Hapus stage FX yg menyebabkan overlay gelap */
+body::before, body::after,
+#invitation-content::before { display: none !important; }
+
+/* CANVAS band visualizer — sembunyikan di bg terang */
+#band-canvas { display: none !important; }
+#ember-layer  { display: none !important; }
+
+/* COVER PAGE */
+#cover-page {
+  background:
+    radial-gradient(ellipse 80% 80% at 30% 20%, rgba(232,209,176,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 80% 80%, rgba(212,160,144,0.3) 0%, transparent 55%),
+    linear-gradient(175deg, #FFFDF8 0%, #F5EDDC 50%, #F2E8D5 100%) !important;
+}
+#cover-photo-overlay {
+  background:
+    linear-gradient(165deg,rgba(253,250,245,0.78) 0%,rgba(245,237,220,0.68) 35%,rgba(234,217,188,0.62) 65%,rgba(220,203,168,0.72) 100%),
+    radial-gradient(ellipse 90% 90% at 50% 50%,transparent 40%,rgba(90,56,32,0.2) 100%) !important;
+}
+
+/* COVER TEXT */
+.cv-label        { color: #8B6508 !important; }
+.cv-names        { color: #2E1C0E !important; text-shadow: 0 3px 24px rgba(90,56,32,0.1) !important; animation: fadeUp 1.4s var(--transition) 1.2s forwards !important; }
+.cv-names .amp   { color: #B8860B !important; }
+.cv-date         { color: #7A5535 !important; }
+.cv-hint         { color: #A07850 !important; }
+.cv-hint i       { color: #B8860B !important; }
+.cv-btn          { background: linear-gradient(135deg,#5A3820 0%,#7A5535 30%,#C9A052 70%,#E0C278 100%) !important; color: #FDFAF5 !important; }
+.cv-divider-icon { color: #B8860B !important; }
+.cv-guest-name   { color: #C8A052 !important; }
+
+/* NAV */
+.float-nav {
+  background: rgba(253,250,245,0.95) !important;
+  border: 1px solid rgba(184,134,11,0.25) !important;
+  box-shadow: 0 8px 32px rgba(90,56,32,0.1) !important;
+}
+.nav-link              { color: #7A5535 !important; }
+.nav-link:hover,
+.nav-link.active       { color: #5A3820 !important; background: rgba(184,134,11,0.1) !important; }
+
+/* MUSIC BTN */
+.music-btn             { background: rgba(253,250,245,0.95) !important; border: 1px solid rgba(184,134,11,0.3) !important; }
+.music-icon            { color: #8B6508 !important; }
+.music-wave-bar        { background: #B8860B !important; }
+
+/* HERO / HOME */
+#home {
+  background:
+    radial-gradient(ellipse 65% 60% at 15% 20%,rgba(232,209,176,0.4) 0%,transparent 55%),
+    radial-gradient(ellipse 55% 50% at 85% 80%,rgba(212,186,160,0.3) 0%,transparent 55%),
+    linear-gradient(175deg,#FFFDF8 0%,#F5EDDC 50%,#F2E8D5 100%) !important;
+}
+#home-photo-overlay {
+  background:
+    linear-gradient(165deg,rgba(253,250,245,0.78) 0%,rgba(245,237,220,0.68) 30%,rgba(234,217,188,0.58) 65%,rgba(220,203,168,0.72) 100%),
+    radial-gradient(ellipse 90% 90% at 50% 50%,transparent 35%,rgba(90,56,32,0.22) 100%) !important;
+}
+.hero-eyebrow { color: #8B6508 !important; }
+.hero-names   { color: #2E1C0E !important; text-shadow: 0 4px 30px rgba(90,56,32,0.08) !important; animation: fadeUp 1.4s var(--transition) 0.5s both !important; }
+.hero-amp     { color: #B8860B !important; }
+.hero-date    { color: #7A5535 !important; }
+.hero-quote   { color: #7A5535 !important; background: none !important; border: none !important; padding: 0 !important; }
+.hero-quote em{ color: #8B6508 !important; }
+
+/* ORNAMENT */
+.ornament-line            { background: linear-gradient(90deg,transparent,#C9A052) !important; }
+.ornament-line.r          { background: linear-gradient(90deg,#C9A052,transparent) !important; }
+.ornament-icon            { color: #C9A052 !important; }
+.section-eyebrow          { color: #8B6508 !important; }
+.section-title            { color: #2E1C0E !important; }
+.section-subtitle         { color: #7A5535 !important; }
+
+/* Hapus ::after glow di section-title dari band theme */
+.section-title::after     { display: none !important; }
+
+/* INVITE SECTION */
+.invite-section           { background: #F5EDDC !important; }
+.invite-section-bg,
+.invite-section-overlay   { display: none !important; }
+.invite-text              { color: #4A3020 !important; }
+.invite-source            { color: #A07850 !important; }
+.big-quote                { color: rgba(201,160,82,0.18) !important; }
+#invite-guest-name        { color: #8B6508 !important; }
+
+/* COUPLE */
+#couple {
+  background: linear-gradient(150deg,#5A3820 0%,#7A5535 50%,#9A7248 100%) !important;
+}
+.couple-photo-overlay {
+  background: linear-gradient(150deg,rgba(58,32,12,0.75) 0%,rgba(90,53,28,0.65) 40%,rgba(120,80,40,0.6) 100%),
+              radial-gradient(ellipse 90% 90% at 50% 50%,transparent 30%,rgba(30,12,0,0.3) 100%) !important;
+}
+#couple .section-eyebrow  { color: rgba(224,194,120,0.9) !important; }
+#couple .section-title    { color: #FDFAF5 !important; }
+#couple .ornament-line    { background: linear-gradient(90deg,transparent,rgba(224,194,120,0.5)) !important; }
+#couple .ornament-line.r  { background: linear-gradient(90deg,rgba(224,194,120,0.5),transparent) !important; }
+#couple .ornament-icon    { color: rgba(224,194,120,0.9) !important; }
+.couple-name-script       { color: #FDFAF5 !important; animation: none !important; }
+.couple-fullname          { color: rgba(240,216,180,0.85) !important; }
+.couple-parents           { color: rgba(220,200,160,0.75) !important; }
+.couple-parents span      { color: rgba(240,216,180,0.9) !important; }
+.couple-ig                { color: #E0C278 !important; }
+.couple-heart-icon        { background: linear-gradient(135deg,#5A3820,#C9A052) !important; animation: heartbeat 2.5s ease-in-out infinite !important; }
+.couple-heart-icon i      { color: #FDFAF5 !important; }
+.couple-photo {
+  border: 3px solid #FDFAF5 !important;
+  box-shadow: 0 20px 60px rgba(90,56,32,0.2), 0 0 0 6px rgba(201,160,82,0.15) !important;
+}
+
+/* COUNTDOWN */
+#countdown {
+  background: linear-gradient(150deg,#5A3820 0%,#7A5535 50%,#9A7248 100%) !important;
+  color: #FDFAF5 !important;
+}
+#countdown-photo-overlay {
+  background: linear-gradient(150deg,rgba(58,32,12,0.82) 0%,rgba(90,53,28,0.75) 40%,rgba(120,80,40,0.7) 100%),
+              radial-gradient(ellipse 90% 90% at 50% 50%,transparent 30%,rgba(30,12,0,0.35) 100%) !important;
+}
+#countdown .section-eyebrow  { color: rgba(224,194,120,0.85) !important; }
+#countdown .section-title    { color: #FDFAF5 !important; }
+#countdown .ornament-line    { background: linear-gradient(90deg,transparent,rgba(224,194,120,0.5)) !important; }
+#countdown .ornament-line.r  { background: linear-gradient(90deg,rgba(224,194,120,0.5),transparent) !important; }
+#countdown .ornament-icon    { color: rgba(224,194,120,0.85) !important; }
+.cd-box {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(201,160,82,0.25) !important;
+  animation: none !important;
+}
+.cd-num   { color: #E0C278 !important; }
+.cd-label { color: rgba(255,255,255,0.55) !important; }
+.countdown-date     { color: #E0C278 !important; }
+.countdown-info     { background: rgba(255,255,255,0.07) !important; border: 1px solid rgba(201,160,82,0.2) !important; }
+.countdown-info p   { color: rgba(255,255,255,0.75) !important; }
+
+/* STORY */
+#story { background: linear-gradient(160deg,#FFFDF8 0%,#F5EDDC 50%,#F8F2E6 100%) !important; }
+#story-floral-bg,
+#story-floral-overlay { display: none !important; }
+.si-title   { color: #2E1C0E !important; }
+.si-desc    { color: #7A5535 !important; }
+.si-dot-year{ color: #8B6508 !important; }
+#story .section-eyebrow { color: #8B6508 !important; }
+#story .section-title   { color: #2E1C0E !important; }
+
+/* EVENTS */
+#events { background: linear-gradient(160deg,#F5EDDC 0%,#F8F2E6 100%) !important; }
+.event-card {
+  background: rgba(255,255,255,0.9) !important;
+  border: 1px solid rgba(201,160,82,0.28) !important;
+  box-shadow: 0 20px 60px rgba(90,56,32,0.1), inset 0 1px 0 rgba(255,255,255,0.9) !important;
+  animation: none !important;
+}
+.event-card:hover {
+  border-color: rgba(201,160,82,0.5) !important;
+  transform: translateY(-4px) !important;
+}
+.event-card-header {
+  background: linear-gradient(145deg,#5A3820 0%,#7A5535 45%,#9A7248 100%) !important;
+}
+.event-badge    { color: #F0D890 !important; border-color: rgba(255,255,255,0.35) !important; }
+.event-title    { color: #FDFAF5 !important; animation: none !important; text-shadow: none !important; }
+.event-row-text { color: #5A3A22 !important; }
+.event-row-text strong { color: #2E1C0E !important; }
+.event-row-icon i { color: #9A7248 !important; }
+.btn-maps { background: linear-gradient(135deg,#7A5535,#C9A052) !important; color: #FDFAF5 !important; }
+.venue-map-info h4 { color: #2E1C0E !important; }
+.venue-map-info p  { color: #7A5535 !important; }
+.venue-map-link    { background: linear-gradient(135deg,#7A5535,#C9A052) !important; color: #FDFAF5 !important; }
+
+/* GALLERY */
+#gallery { background: #5A3820 !important; }
+#gallery .section-eyebrow  { color: rgba(201,160,82,0.8) !important; }
+#gallery .section-title    { color: #FDFAF5 !important; }
+#gallery .section-subtitle { color: rgba(255,255,255,0.5) !important; }
+.gallery-nav-btn { color: #E0C278 !important; border-color: rgba(201,160,82,0.3) !important; }
+.gallery-dot        { background: rgba(201,160,82,0.3) !important; }
+.gallery-dot.active { background: #C9A052 !important; }
+
+/* ROMANTIC */
+.romantic-section {
+  background: linear-gradient(135deg,#7A5535 0%,#5A3820 50%,#7A5535 100%) !important;
+  animation: gradientShift 8s ease-in-out infinite !important;
+}
+.romantic-quote  { color: #E0C278 !important; }
+.romantic-author { color: rgba(255,255,255,0.55) !important; }
+
+/* RSVP */
+#rsvp { background: linear-gradient(160deg,#F2E8D5 0%,#F5EDDC 100%) !important; }
+#rsvp-floral-bg,
+#rsvp-floral-overlay { display: none !important; }
+#rsvp .section-eyebrow  { color: #8B6508 !important; }
+#rsvp .section-title    { color: #2E1C0E !important; }
+#rsvp .section-subtitle { color: #7A5535 !important; }
+.rsvp-wrap {
+  background: rgba(255,255,255,0.75) !important;
+  border: 1px solid rgba(201,160,82,0.25) !important;
+  animation: none !important;
+}
+.form-label    { color: #8B6508 !important; }
+.form-control  { background: rgba(255,255,255,0.85) !important; border-color: rgba(201,160,82,0.3) !important; color: #2E1C0E !important; font-size: 0.9rem !important; }
+.form-control::placeholder { color: rgba(90,56,32,0.35) !important; }
+.form-control:focus { border-color: #C9A052 !important; box-shadow: 0 0 0 3px rgba(201,160,82,0.15) !important; }
+.btn-submit { background: linear-gradient(135deg,#5A3820,#7A5535,#C9A052) !important; color: #FDFAF5 !important; }
+
+/* GIFT */
+#gift { background: linear-gradient(160deg,#FFFDF8 0%,#F5EDDC 100%) !important; }
+#gift-floral-bg,
+#gift-floral-overlay { display: none !important; }
+#gift .section-eyebrow  { color: #8B6508 !important; }
+#gift .section-title    { color: #2E1C0E !important; }
+.gift-intro-text        { color: #7A5535 !important; }
+.gift-card-glass {
+  background: rgba(255,255,255,0.65) !important;
+  border: 1px solid rgba(201,160,82,0.35) !important;
+  box-shadow: 0 20px 60px rgba(90,56,32,0.12) !important;
+  animation: none !important;
+}
+.gift-card-glass:hover {
+  transform: translateY(-8px) scale(1.01) !important;
+  border-color: rgba(201,160,82,0.6) !important;
+}
+.gift-bank-name       { color: #8B6508 !important; }
+.gift-account-number  { color: #2E1C0E !important; }
+.gift-account-holder  { color: #7A5535 !important; }
+.btn-copy-glass       { color: #8B6508 !important; border-color: rgba(201,160,82,0.45) !important; }
+.btn-gift-wa          { background: linear-gradient(135deg,#7A5535,#C9A052) !important; color: #FDFAF5 !important; }
+.gift-address-card    { background: rgba(255,255,255,0.65) !important; border-color: rgba(201,160,82,0.3) !important; }
+.gift-address-label   { color: #8B6508 !important; }
+.gift-address-text    { color: #4A3020 !important; }
+.btn-copy-address     { color: #8B6508 !important; border-color: rgba(201,160,82,0.45) !important; }
+
+/* WISHES */
+#wishes { background: linear-gradient(160deg,#F8F2E6 0%,#F2E8D5 100%) !important; }
+#wishes-floral-bg,
+#wishes-floral-overlay { display: none !important; }
+#wishes .section-eyebrow  { color: #8B6508 !important; }
+#wishes .section-title    { color: #2E1C0E !important; }
+#wishes .section-subtitle { color: #7A5535 !important; }
+.wish-feed-header h4      { color: #2E1C0E !important; }
+#wish-count               { color: #8B6508 !important; }
+.wish-form-wrap {
+  background: rgba(255,255,255,0.7) !important;
+  border: 1px solid rgba(201,160,82,0.22) !important;
+}
+.wish-card {
+  background: rgba(255,255,255,0.88) !important;
+  border: 1px solid rgba(201,160,82,0.22) !important;
+  box-shadow: 0 8px 32px rgba(90,56,32,0.08) !important;
+}
+.wish-author  { color: #2E1C0E !important; }
+.wish-text    { color: #5A3A22 !important; }
+.wish-date    { color: #A07850 !important; }
+.wish-avatar  { background: linear-gradient(135deg,#ECC8B8,#D4A090) !important; color: #FDFAF5 !important; }
+.wish-carousel-btn {
+  background: rgba(255,255,255,0.95) !important;
+  color: #8B6508 !important;
+  border-color: rgba(201,160,82,0.35) !important;
+}
+
+/* CLOSING */
+#closing { background: linear-gradient(175deg,#FFFDF8 0%,#F5EDDC 50%,#F2E8D5 100%) !important; }
+#closing-floral-bg,
+#closing-floral-overlay { display: none !important; }
+.closing-script  { color: #2E1C0E !important; animation: none !important; }
+.closing-amp     { color: #B8860B !important; }
+.closing-tagline { color: #7A5535 !important; }
+
+/* FOOTER */
+footer { background: #5A3820 !important; color: rgba(255,255,255,0.45) !important; }
+footer p             { color: rgba(255,255,255,0.45) !important; }
+.footer-script       { color: rgba(201,160,82,0.5) !important; }
+
+/* MODAL */
+.modal-overlay { background: rgba(16,8,2,0.75) !important; }
+.modal-box {
+  background: #F5EDDC !important;
+  border: 1px solid rgba(201,160,82,0.3) !important;
+  color: #2E1C0E !important;
+}
+.modal-close       { color: #7A5535 !important; background: rgba(245,237,220,0.95) !important; }
+.modal-bank        { color: #8B6508 !important; }
+.modal-num,
+#modal-account-number { color: #2E1C0E !important; }
+.modal-holder,
+#modal-account-holder { color: #7A5535 !important; }
+.wa-preview {
+  color: #4A3020 !important;
+  background: rgba(201,160,82,0.08) !important;
+  border-color: rgba(201,160,82,0.2) !important;
+}
+#preview-label { color: #8B6508 !important; }
+.copy-notif    { color: #6A8060 !important; }
+
+/* TOAST */
+#copy-toast {
+  background: rgba(42,22,8,0.9) !important;
+  color: #E0C278 !important;
+  border-color: rgba(201,160,82,0.3) !important;
+}
+
+/* LIGHTBOX */
+.lightbox { background: rgba(16,8,2,0.96) !important; }
+.lightbox-close { color: #E0C278 !important; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar-track { background: #F5EDDC !important; }
+::-webkit-scrollbar-thumb { background: rgba(201,160,82,0.4) !important; }
+
+/* Override semua glitch & neon animation dari band theme */
+.cv-names, .hero-names, .event-title,
+.couple-name-script, .closing-script {
+  animation: fadeUp 1.4s var(--transition) 1.2s forwards !important;
+}
+
+/* General fallback: semua p di section terang */
+#home p, #story p, #events p, #rsvp p,
+#gift p, #wishes p, #closing p,
+.invite-section p, .romantic-section p {
+  color: inherit;
+}
+
+/* Hapus ::after stage-light & waveform dari band theme */
+body::before, body::after,
+#home::after, #cover-page::after { display: none !important; }
+
+/* Option dark di select */
+option { background: #F5EDDC !important; color: #2E1C0E !important; }
